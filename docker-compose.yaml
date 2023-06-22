@@ -1,4 +1,5 @@
 version: "3"
+
 services:
   chrome:
     image: selenium/node-chrome:beta
