@@ -3,6 +3,8 @@ version: "3"
 services:
   test:
     build: .
+    depends_on:
+      - selenium-hub
 
   chrome:
     image: selenium/node-chrome:beta
