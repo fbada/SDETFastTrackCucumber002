@@ -6,7 +6,7 @@ services:
     depends_on:
       - selenium-hub
     volumes:
-      - /Users/rds1/Downloads/SDETFastTrackCucumber/target:/SDETFastTrackCucumber/target
+      - /Users/rds1/Downloads/SDETFastTrackCucumber/target:/SDETFastTrackCucumber/target/cucumber-reports.html
 
   chrome:
     image: selenium/node-chrome:beta
