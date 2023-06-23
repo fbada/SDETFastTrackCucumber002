@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y git
 RUN git clone https://github.com/fbada/SDETFastTrackCucumber002.git
 
 # Set the working directory inside the container
-WORKDIR /SDETFastTrackCucumber
+WORKDIR /SDETFastTrackCucumber002
 # Build the application
 RUN mvn clean package -DskipTests
 
