@@ -1,6 +1,9 @@
 version: "3"
 
 services:
+  test:
+    build: .
+
   chrome:
     image: selenium/node-chrome:beta
     shm_size: 2gb

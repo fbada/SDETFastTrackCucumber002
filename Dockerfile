@@ -10,4 +10,5 @@ WORKDIR /SDETFastTrackCucumber
 # Build the application
 RUN mvn clean package -DskipTests
 
+ENTRYPOINT ["mvn", "clean", "verify"]
 
