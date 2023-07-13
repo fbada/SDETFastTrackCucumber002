@@ -76,6 +76,7 @@ public class Driver {
                 try {
                     FirefoxOptions firefoxOptions = new FirefoxOptions();
                     URL url = new URL("http://192.168.1.250:4444/wd/hub");
+                    firefoxOptions.setCapability("browserName", "firefox");
                     firefoxOptions.setHeadless(true);
                     driverPool.set(new RemoteWebDriver(url, firefoxOptions));
                 } catch (MalformedURLException e) {
