@@ -1,6 +1,6 @@
 Feature: Google Search
 
-  @googleSearch
+  @googleSearch @smoke
   Scenario Outline: Google search for capital city of countries
     Given user is on google home page
     When user searches for "<country>" capital

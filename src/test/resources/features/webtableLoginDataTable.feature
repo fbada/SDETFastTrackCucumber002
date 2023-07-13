@@ -1,7 +1,7 @@
 Feature: Webtable application login with data table
   User Story: User should be able to login webtable application
 
-  @webtableLoginDataTable
+  @webtableLoginDataTable @smoke
   Scenario: login webtable app with using datatable
     Given user is on the login page of webtable app
     When user enters below credentials
