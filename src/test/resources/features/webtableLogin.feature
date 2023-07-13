@@ -12,7 +12,7 @@ Feature: Webtable app login
     And user clicks to login button
     Then user should see url contains orders
 
-  @wip
+
   Scenario: Login scenario with invalid credentials
     When user enters username incorrect
     And user enters password incorrect
