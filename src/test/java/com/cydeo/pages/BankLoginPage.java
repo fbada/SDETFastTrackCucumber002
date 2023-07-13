@@ -19,13 +19,13 @@ public class BankLoginPage {
         @FindBy(name="username")
         WebElement userName;
 
-        @FindBy(id="password")
+        @FindBy(name="password")
         WebElement password;
 
-        @FindBy(xpath = "//button[@id='submit']")
+        @FindBy(css = "button[type='submit']")
         WebElement submit;
 
-        @FindBy(id ="error")
+        @FindBy(xpath = "//p[contains(text(),'Incorrect')]")
         public WebElement errorMessage;
 
     public void navigateToLoginPage() {
