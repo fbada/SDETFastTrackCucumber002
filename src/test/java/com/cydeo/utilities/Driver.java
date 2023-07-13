@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.net.MalformedURLException;
@@ -67,6 +68,16 @@ public class Driver {
                     URL url = new URL("http://192.168.1.250:4444/wd/hub");
                     chromeOptions.setHeadless(true);
                     driverPool.set(new RemoteWebDriver (url, chromeOptions));
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                }
+
+            case "remote-firefox":
+                try {
+                    FirefoxOptions firefoxDriver = new FirefoxOptions();
+                    URL url = new URL("http://192.168.1.250:4444/wd/hub");
+                    firefoxDriver.setHeadless(true);
+                    driverPool.set(new RemoteWebDriver (url, firefoxDriver));
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 }
