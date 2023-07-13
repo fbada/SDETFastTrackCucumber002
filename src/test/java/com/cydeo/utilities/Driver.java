@@ -74,14 +74,15 @@ public class Driver {
 
             case "remote-firefox":
                 try {
-                    FirefoxOptions firefoxDriver = new FirefoxOptions();
+                    FirefoxOptions firefoxOptions = new FirefoxOptions();
                     URL url = new URL("http://192.168.1.250:4444/wd/hub");
-                    firefoxDriver.setHeadless(true);
-                    driverPool.set(new RemoteWebDriver (url, firefoxDriver));
+                    firefoxOptions.setHeadless(true);
+                    driverPool.set(new RemoteWebDriver(url, firefoxOptions));
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 }
-          }
+
+        }
         }
 
     // Same driver instance will be returned every time we call Driver.getDriver() method
