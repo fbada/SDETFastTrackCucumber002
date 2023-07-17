@@ -8,27 +8,27 @@ services:
     volumes:
       - /Users/rds1/Downloads/SDETFastTrackCucumber/target:/SDETFastTrackCucumber/target/cucumber-reports.html
 
-  chrome:
-    image: selenium/node-chrome:beta
-    shm_size: 2gb
-    depends_on:
-      - selenium-hub
-    environment:
-      - SE_EVENT_BUS_HOST=selenium-hub
-      - SE_EVENT_BUS_PUBLISH_PORT=4442
-      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
-      - SE_NODE_MAX_SESSIONS=5  # Set the maximum number of sessions to 5 per Chrome node
-
-  edge:
-    image: selenium/node-edge:beta
-    shm_size: 2gb
-    depends_on:
-      - selenium-hub
-    environment:
-      - SE_EVENT_BUS_HOST=selenium-hub
-      - SE_EVENT_BUS_PUBLISH_PORT=4442
-      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
-      - SE_NODE_MAX_SESSIONS=5  # Set the maximum number of sessions to 5 per Edge node
+#  chrome:
+#    image: selenium/node-chrome:beta
+#    shm_size: 2gb
+#    depends_on:
+#      - selenium-hub
+#    environment:
+#      - SE_EVENT_BUS_HOST=selenium-hub
+#      - SE_EVENT_BUS_PUBLISH_PORT=4442
+#      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+#      - SE_NODE_MAX_SESSIONS=5  # Set the maximum number of sessions to 5 per Chrome node
+#
+#  edge:
+#    image: selenium/node-edge:beta
+#    shm_size: 2gb
+#    depends_on:
+#      - selenium-hub
+#    environment:
+#      - SE_EVENT_BUS_HOST=selenium-hub
+#      - SE_EVENT_BUS_PUBLISH_PORT=4442
+#      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+#      - SE_NODE_MAX_SESSIONS=5  # Set the maximum number of sessions to 5 per Edge node
 
   firefox:
     image: selenium/node-firefox:beta
@@ -39,7 +39,10 @@ services:
       - SE_EVENT_BUS_HOST=selenium-hub
       - SE_EVENT_BUS_PUBLISH_PORT=4442
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
-      - SE_NODE_MAX_SESSIONS=5  # Set the maximum number of sessions to 5 per Firefox node
+      - SE_NODE_MAX_SESSIONS=5
+      - SE_NODE_GRID_ROLE=wd
+      - SE_NODE_BROWSER_NAME=firefox  # Add this line to specify the browser name
+
 
   selenium-hub:
     image: selenium/hub:latest
