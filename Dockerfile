@@ -32,4 +32,4 @@ COPY src/ ./src/
 RUN mvn -B package
 
 # Set the entry point for running the Maven build
-ENTRYPOINT ["mvn", "test"]
+ENTRYPOINT ["mvn", "verify"]
