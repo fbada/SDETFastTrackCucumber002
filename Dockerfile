@@ -12,9 +12,6 @@ WORKDIR /usr/src/app
 # Clone the repository
 RUN git clone https://github.com/fbada/SDETFastTrackCucumber002.git .
 
-# Resolve Maven dependencies
-RUN mvn -B dependency:resolve
-
 # Build the application
 RUN mvn clean package -DskipTests
 
