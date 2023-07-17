@@ -1,14 +1,35 @@
-# Use the official maven image as the base image
-FROM maven:3.8.1-openjdk-11
+# Use Alpine Linux as the base image
+FROM alpine:latest
 
-# install git
-RUN apt-get update && apt-get install -y git
-RUN git clone https://github.com/fbada/SDETFastTrackCucumber002.git
+# Install necessary dependencies
+RUN apk update && \
+    apk upgrade && \
+    apk add --no-cache \
+      udev \
+      ttf-freefont \
+      chromium \
+      chromium-chromedriver \
+      openjdk11 \
+      maven
 
-# Set the working directory inside the container
-WORKDIR /SDETFastTrackCucumber002
-# Build the application
-RUN mvn clean package -DskipTests
+# Set environment variables for Chrome and ChromeDriver
+ENV CHROME_BIN=/usr/bin/chromium-browser \
+    CHROME_PATH=/usr/lib/chromium/
 
-ENTRYPOINT ["mvn", "clean", "verify"]
+# Set the working directory
+WORKDIR /usr/src/app
 
+# Copy the Maven project files
+COPY pom.xml .
+
+# Resolve Maven dependencies
+RUN mvn -B dependency:resolve
+
+# Copy the source code
+COPY src/ ./src/
+
+# Build the Maven project
+RUN mvn -B package
+
+# Set the entry point for running the Maven build
+ENTRYPOINT ["mvn", "test"]
