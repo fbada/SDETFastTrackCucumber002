@@ -34,7 +34,8 @@ public class Driver {
 
         if(driverPool.get() == null){  // if driver/browser was never opened
 
-        String browserType = ConfigurationReader.getProperty("browser");
+//        String browserType = ConfigurationReader.getProperty("browser");
+        String browserType = "remote-firefox"; // this line is added for Jenkins to run the test with "mvn clean verify
 
         /*
         Depending on the browserType our switch statement will determine

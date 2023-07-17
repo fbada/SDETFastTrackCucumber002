@@ -1,19 +1,14 @@
-# Use the selenium/standalone-chrome base image
-FROM selenium/standalone-chrome
+# Use the official maven image as the base image
+FROM maven:3.8.1-openjdk-11
 
-# Install Git and Maven
-USER root
-RUN apt-get update && \
-    apt-get install -y git maven
+# install git
+RUN apt-get update && apt-get install -y git
+RUN git clone https://github.com/fbada/SDETFastTrackCucumber002.git
 
-# Set the working directory
-WORKDIR /usr/src/app
-
-# Clone the repository
-RUN git clone https://github.com/fbada/SDETFastTrackCucumber002.git .
-
+# Set the working directory inside the container
+WORKDIR /SDETFastTrackCucumber002
 # Build the application
 RUN mvn clean package -DskipTests
 
-# Set the entry point for running the Maven build
-ENTRYPOINT ["mvn","verify"]
+ENTRYPOINT ["mvn", "clean", "verify"]
+
